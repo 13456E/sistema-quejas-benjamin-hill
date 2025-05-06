@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Notificaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="notifications.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="notifications-container">
+        <!-- Icono de notificaciones en la barra de navegación -->
+        <div class="notifications-icon" id="notificationsToggle">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">0</span>
+        </div>
+
+        <!-- Panel de notificaciones -->
+        <div class="notifications-panel" id="notificationsPanel">
+            <div class="notifications-header">
+                <div class="header-content">
+                    <h2><i class="fas fa-bell"></i> Notificaciones</h2>
+                    <p class="notification-count">0 notificaciones</p>
+                </div>
+                <div class="header-actions">
+                    <button class="mark-all-read" id="markAllRead">
+                        <i class="fas fa-check-double"></i>
+                        Marcar todo como leído
+                    </button>
+                    <button class="clear-notifications" id="clearNotifications">
+                        <i class="fas fa-trash"></i>
+                        Limpiar todo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtros de notificaciones -->
+            <div class="notifications-filters">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i>
+                        Todas
+                    </button>
+                    <button class="filter-btn" data-filter="unread">
+                        <i class="fas fa-envelope"></i>
+                        No leídas
+                    </button>
+                    <button class="filter-btn" data-filter="read">
+                        <i class="fas fa-envelope-open"></i>
+                        Leídas
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn" data-filter="queja">
+                        <i class="fas fa-file-alt"></i>
+                        Quejas
+                    </button>
+                    <button class="filter-btn" data-filter="sugerencia">
+                        <i class="fas fa-lightbulb"></i>
+                        Sugerencias
+                    </button>
+                    <button class="filter-btn" data-filter="contacto">
+                        <i class="fas fa-phone"></i>
+                        Contactos
+                    </button>
+                    <button class="filter-btn" data-filter="sistema">
+                        <i class="fas fa-cog"></i>
+                        Sistema
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lista de notificaciones -->
+            <div class="notifications-list" id="notificationsList">
+                <!-- Las notificaciones se cargarán dinámicamente aquí -->
+            </div>
+
+            <!-- Mensaje cuando no hay notificaciones -->
+            <div class="no-notifications" id="noNotifications">
+                <div class="empty-state">
+                    <i class="fas fa-bell-slash"></i>
+                    <h3>No hay notificaciones</h3>
+                    <p>No tienes ninguna notificación pendiente</p>
+                    <button class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="notifications.js"></script>
+</body>
+</html> 

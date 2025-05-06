@@ -1,0 +1,285 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+}
+
+.stat-item i {
+    color: #4CAF50;
+}
+
+/* Estilos de búsqueda y filtros */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.search-button, .toggle-filters {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggle-filters {
+    background-color: #2196F3;
+}
+
+/* Estilos de filtros */
+.filters-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.apply-filters-btn, .reset-filters-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-filters-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reset-filters-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Estilos de las tarjetas de registro */
+.records-list {
+    display: grid;
+    gap: 20px;
+}
+
+.record-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    position: relative;
+}
+
+.record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.record-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.record-type i {
+    font-size: 20px;
+}
+
+.record-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.record-content h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.record-content p {
+    margin: 0 0 15px 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.record-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+}
+
+.comments-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.comments-section h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.comment-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.comment-author {
+    color: #333;
+    font-weight: bold;
+}
+
+.comment-date {
+    color: #666;
+}
+
+.comment-content {
+    margin: 0;
+    color: #666;
+    line-height: 1.4;
+}
+
+.record-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status-badge.pendiente {
+    background-color: #ffeb3b;
+    color: #000;
+}
+
+.status-badge.en-proceso {
+    background-color: #2196F3;
+    color: white;
+}
+
+.status-badge.completado {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-badge.cancelado {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Estilos para cuando no hay registros */
+.no-records {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-records i {
+    font-size: 48px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.no-records p {
+    color: #666;
+    margin: 0;
+} 

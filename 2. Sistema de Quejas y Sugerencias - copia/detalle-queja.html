@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Queja - Sistema de Quejas y Sugerencias</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra superior -->
+        <header class="top-bar">
+            <div class="left-section">
+                <div class="notifications-icon" id="notificationsToggle" onclick="toggleNotifications()">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notificationBadge">0</span>
+                </div>
+            </div>
+            <div class="header-content">
+                <img src="Escudo de Sonorrsa.jpg" alt="Escudo de Sonora" class="state-shield">
+                <div class="header-text">
+                    <h1>H. Ayuntamiento de Benjamín Hill</h1>
+                    <p class="subtitle">Sonora, México</p>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="menu-icon" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="page">
+            <div class="page-header">
+                <h2>Detalle de Queja</h2>
+            </div>
+            <div class="queja-detail-container">
+                <div class="queja-detail-header">
+                    <div class="folio-section">
+                        <h3>Folio</h3>
+                        <p id="quejaFolio">#-</p>
+                    </div>
+                    <div class="status-section">
+                        <h3>Estado</h3>
+                        <span id="quejaEstado" class="status-badge">-</span>
+                    </div>
+                </div>
+                
+                <div class="queja-detail-content">
+                    <div class="detail-section">
+                        <h3>Tipo</h3>
+                        <p id="quejaTipo">-</p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Descripción</h3>
+                        <p id="quejaDescripcion">-</p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Fecha de Registro</h3>
+                        <p id="quejaFecha">-</p>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Seguimiento</h3>
+                        <div id="quejaSeguimiento" class="seguimiento-timeline">
+                            <!-- Se llenará dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="queja-actions">
+                    <button id="actualizarQueja" class="action-btn">
+                        <i class="fas fa-sync-alt"></i> Actualizar Estado
+                    </button>
+                    <button id="cancelarQueja" class="action-btn danger">
+                        <i class="fas fa-times"></i> Cancelar Queja
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Menú lateral -->
+        <div class="menu-overlay"></div>
+        <div class="side-menu">
+            <div class="close-menu">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="profile-info">
+                <i class="fas fa-user-circle"></i>
+                <h3>Usuario</h3>
+            </div>
+            <div class="menu-items">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Cargar detalles de la queja
+        document.addEventListener('DOMContentLoaded', async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const quejaId = urlParams.get('id');
+            
+            if (!quejaId) {
+                window.location.href = 'historial.html';
+                return;
+            }
+
+            try {
+                const response = await fetch('database/quejas_handler.php?action=obtener_detalle_queja', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ queja_id: quejaId })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    const queja = result.queja;
+                    
+                    document.getElementById('quejaFolio').textContent = `#${queja.id}`;
+                    document.getElementById('quejaEstado').textContent = queja.estado;
+                    document.getElementById('quejaEstado').className = `status-badge ${queja.estado}`;
+                    document.getElementById('quejaTipo').textContent = queja.tipo;
+                    document.getElementById('quejaDescripcion').textContent = queja.descripcion;
+                    document.getElementById('quejaFecha').textContent = new Date(queja.fecha_creacion).toLocaleDateString();
+                    
+                    // Actualizar seguimiento si existe
+                    if (queja.seguimiento && queja.seguimiento.length > 0) {
+                        document.getElementById('quejaSeguimiento').innerHTML = queja.seguimiento
+                            .map(seg => `
+                                <div class="timeline-item">
+                                    <div class="timeline-date">${new Date(seg.fecha).toLocaleDateString()}</div>
+                                    <div class="timeline-content">
+                                        <h4>${seg.estado}</h4>
+                                        <p>${seg.comentario}</p>
+                                    </div>
+                                </div>
+                            `).join('');
+                    } else {
+                        document.getElementById('quejaSeguimiento').innerHTML = 
+                            '<p class="no-seguimiento">Aún no hay actualizaciones de seguimiento.</p>';
+                    }
+                } else {
+                    showStatusMessage('Error al cargar los detalles de la queja', 'error');
+                }
+            } catch (error) {
+                showStatusMessage('Error al conectar con el servidor', 'error');
+            }
+        });
+
+        // Manejar actualización de estado
+        document.getElementById('actualizarQueja').addEventListener('click', function() {
+            // Implementar lógica de actualización
+            showStatusMessage('Función en desarrollo', 'info');
+        });
+
+        // Manejar cancelación de queja
+        document.getElementById('cancelarQueja').addEventListener('click', function() {
+            if (confirm('¿Está seguro que desea cancelar esta queja?')) {
+                // Implementar lógica de cancelación
+                showStatusMessage('Función en desarrollo', 'info');
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones - Benjamín Hill</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="notifications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra superior -->
+        <header class="top-bar">
+            <div class="left-section">
+                <div class="back-button" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </div>
+            <div class="header-content">
+                <img src="Escudo de Sonorrsa.jpg" alt="Escudo de Sonora" class="state-shield">
+                <div class="header-text">
+                    <h1>H. Ayuntamiento de Benjamín Hill</h1>
+                    <p class="subtitle">Sonora, México</p>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="menu-icon" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Panel de notificaciones -->
+        <div class="notifications-panel" id="notificationsPanel">
+            <div class="notifications-header">
+                <h3>Notificaciones</h3>
+                <button class="clear-notifications" id="clearNotifications" title="Limpiar todas las notificaciones">
+                    <i class="fas fa-trash"></i>
+                    <span>Limpiar todo</span>
+                </button>
+            </div>
+            <div id="notificationsList">
+                <!-- Las notificaciones se cargarán dinámicamente aquí -->
+            </div>
+            <div class="no-notifications" id="noNotifications">
+                <i class="fas fa-bell-slash"></i>
+                <p>No hay notificaciones nuevas</p>
+            </div>
+        </div>
+
+        <!-- Menú lateral -->
+        <div class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <h3>Menú</h3>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="menu-items">
+                <a href="index.html" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="registrar-queja.html" class="menu-link">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Registrar Queja</span>
+                </a>
+                <a href="historial.html" class="menu-link">
+                    <i class="fas fa-history"></i>
+                    <span>Historial</span>
+                </a>
+                <a href="sugerencias.html" class="menu-link">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Sugerencias</span>
+                </a>
+                <a href="datos-curiosos.html" class="menu-link">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Datos Curiosos</span>
+                </a>
+                <a href="contacto.html" class="menu-link">
+                    <i class="fas fa-phone"></i>
+                    <span>Contacto Directo</span>
+                </a>
+                <a href="notificaciones.html" class="menu-link active">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificaciones</span>
+                </a>
+                <a href="perfil.html" class="menu-link">
+                    <i class="fas fa-user"></i>
+                    <span>Mi Perfil</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Overlay para el menú -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Contenido principal -->
+        <main class="page">
+            <div class="page-header">
+                <h2>Notificaciones</h2>
+                <div class="notifications-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-bell"></i>
+                        <span>Todas</span>
+                    </button>
+                    <button class="filter-btn" data-filter="unread">
+                        <i class="fas fa-envelope"></i>
+                        <span>No leídas</span>
+                    </button>
+                    <button class="filter-btn" data-filter="read">
+                        <i class="fas fa-envelope-open"></i>
+                        <span>Leídas</span>
+                    </button>
+                </div>
+            </div>
+            <div class="notifications-container">
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Las notificaciones se cargarán dinámicamente aquí -->
+                </div>
+                <div class="no-notifications" id="noNotifications">
+                    <i class="fas fa-bell-slash"></i>
+                    <p>No hay notificaciones nuevas</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Barra de navegación inferior -->
+        <nav class="bottom-nav">
+            <div class="nav-item" data-page="inicio">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </div>
+            <div class="nav-item" data-page="historial">
+                <i class="fas fa-history"></i>
+                <span>Historial</span>
+            </div>
+            <div class="nav-item" data-page="perfil">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </div>
+        </nav>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="auth-utils.js"></script>
+    <script src="notifications.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
